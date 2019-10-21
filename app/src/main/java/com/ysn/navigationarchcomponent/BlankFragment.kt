@@ -24,10 +24,11 @@ class BlankFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // basic example
         // way 1
-        val s = Navigation.createNavigateOnClickListener(R.id.action_blankFragment_to_otherFragment)
+        /*val s = Navigation.createNavigateOnClickListener(R.id.action_blankFragment_to_otherFragment)
         val button = view.findViewById<Button>(R.id.button_frag1)
-        button.setOnClickListener(s)
+        button.setOnClickListener(s)*/
 
         // way 2
         /*val navController = Navigation.findNavController(activity!!, R.id.nav_host_fragment)
@@ -41,6 +42,13 @@ class BlankFragment : Fragment() {
         button.setOnClickListener {
             navController.navigate(navDirections)
         }*/
+
+        // with argument
+        val bundle = Bundle()
+        bundle.putString("test_string", "hello world from previous screen")
+        val s = Navigation.createNavigateOnClickListener(R.id.action_blankFragment_to_otherFragment, bundle)
+        val button = view.findViewById<Button>(R.id.button_frag1)
+        button.setOnClickListener(s)
     }
 
 }
